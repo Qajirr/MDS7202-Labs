@@ -1,0 +1,4 @@
+
+*.txt
+/Lab 1 - Git/videos
+!171.txt
