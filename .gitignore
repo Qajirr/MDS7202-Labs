@@ -6,3 +6,4 @@
 *.jpg
 *.parquet
 *.pkl
+*.pickle
