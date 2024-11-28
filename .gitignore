@@ -12,3 +12,8 @@
 *.zip
 Lab 11 - Agentes Autónomos/.env
 *.pdf
+/Lab12 - MLOps/mlruns
+/Lab12 - MLOps/__pycache__
+*venv
+*.tar
+*.7z

@@ -1,0 +1,12 @@
+*.pyc
+__pycache__/
+plots/
+*.log
+*.pkl
+mlruns/
+venv/
+*.ipynb
+*.html
+*.json
+optimize.py
+*.csv
