@@ -5,9 +5,10 @@ WORKDIR /airflow_project
 ENV AIRFLOW_HOME=/airflow_project
 
 RUN pip install apache-airflow
-RUN pip install scikit-learn pandas numpy lightgbm
+RUN pip install scikit-learn pandas numpy lightgbm kubernetes gradio
 
 RUN airflow db init
+RUN apt-get update && apt-get install -y curl
 
 EXPOSE 8080
 

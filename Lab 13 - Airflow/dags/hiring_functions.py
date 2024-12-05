@@ -22,9 +22,10 @@ def create_folders(**kwargs):
 
 
 # 2. División de datos
-def split_data():
-    raw_path = os.path.join('data', 'raw', 'data_1.csv')
-    splits_path = os.path.join('data', 'splits')
+def split_data(**kwargs):
+    execution_date = kwargs.get('ds', datetime.now().strftime('%Y-%m-%d'))
+    raw_path = os.path.join(f'data_{execution_date}', 'raw', 'data_1.csv')
+    splits_path = os.path.join(f'data_{execution_date}', 'splits')
 
     df = pd.read_csv(raw_path)
     X = df.drop(columns=['HiringDecision'])
@@ -42,9 +43,10 @@ def split_data():
 
 
 # 3. Preprocesamiento y entrenamiento
-def preprocess_and_train():
-    splits_path = os.path.join('data', 'splits')
-    models_path = os.path.join('data', 'models')
+def preprocess_and_train(**kwargs):
+    execution_date = kwargs.get('ds', datetime.now().strftime('%Y-%m-%d'))
+    splits_path = os.path.join(f'data_{execution_date}', 'splits')
+    models_path = os.path.join(f'data_{execution_date}', 'models')
 
     X_train = pd.read_csv(os.path.join(splits_path, 'X_train.csv'))
     X_test = pd.read_csv(os.path.join(splits_path, 'X_test.csv'))
@@ -94,11 +96,10 @@ def predict(file, model_path):
     return {'Predicción': labels[0]}
 
 
-# 5. Interfaz Gradio
-def gradio_interface():
+def gradio_interface(**kwargs):
     import gradio as gr
-
-    model_path = os.path.join('data', 'models', 'hiring_model.joblib')
+    execution_date = kwargs.get('ds', datetime.now().strftime('%Y-%m-%d'))
+    model_path = os.path.join(f'data_{execution_date}', 'models', 'hiring_model.joblib')
 
     interface = gr.Interface(
         fn=lambda file: predict(file, model_path),
