@@ -1,15 +1,22 @@
-FROM python:3.11-slim
+FROM python:3.10-slim
 
-WORKDIR /app
+WORKDIR /airflow_project
 
-# Requerimientos
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+ENV AIRFLOW_HOME=/airflow_project
 
-# App
-COPY . /app/
+RUN pip install apache-airflow
+RUN pip install scikit-learn pandas numpy xgboost kubernetes gradio shap mlflow optuna
 
-EXPOSE 8000
+RUN airflow db init
+RUN apt-get update && apt-get install -y curl
 
-# Iniciar App
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 8080
+
+RUN airflow users create --role Admin --username admin --email admin \
+ --firstname admin --lastname admin --password admin
+
+COPY ./dags /airflow_project/dags
+COPY ./logs /airflow_project/logs
+COPY ./plugins /airflow_project/plugins
+
+CMD ["sh", "-c", "airflow webserver -p 8080 & airflow scheduler"]
