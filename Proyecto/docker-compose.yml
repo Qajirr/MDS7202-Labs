@@ -1,0 +1,25 @@
+services:
+  mlflow_server:
+    image: mlflow:latest
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:///mlflow.db
+      --default-artifact-root ./mlruns
+      --host 0.0.0.0
+      --port 8080
+    volumes:
+      - ./mlruns:/mlruns
+      - ./mlflow.db:/mlflow.db
+    ports:
+      - "8080:8080"
+    networks:
+      - airflow_network
+
+  airflow_scheduler:
+    image: apache/airflow:latest
+    networks:
+      - airflow_network
+
+networks:
+  airflow_network:
+    driver: bridge
