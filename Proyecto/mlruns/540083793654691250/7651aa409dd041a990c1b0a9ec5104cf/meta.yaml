@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/vicen/OneDrive/Documentos/GitHub/MDS7202-Labs/Lab12%20-%20MLOps/mlruns/540083793654691250/7651aa409dd041a990c1b0a9ec5104cf/artifacts
+end_time: 1734058885681
+entry_point_name: ''
+experiment_id: '540083793654691250'
+lifecycle_stage: active
+run_id: 7651aa409dd041a990c1b0a9ec5104cf
+run_name: XGBoost Optimization
+run_uuid: 7651aa409dd041a990c1b0a9ec5104cf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734058884998
+status: 4
+tags: []
+user_id: vicen

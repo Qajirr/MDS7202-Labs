@@ -8,5 +8,4 @@ venv/
 *.ipynb
 *.html
 *.json
-optimize.py
 *.csv

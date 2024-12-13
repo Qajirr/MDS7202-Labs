@@ -1,0 +1,6 @@
+artifact_location: file:///c:/Users/vicen/OneDrive/Documentos/GitHub/MDS7202-Labs/Lab12%20-%20MLOps/mlruns/540083793654691250
+creation_time: 1732744710193
+experiment_id: '540083793654691250'
+last_update_time: 1732744710193
+lifecycle_stage: active
+name: XGBoost_Optimization
